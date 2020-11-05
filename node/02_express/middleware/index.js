@@ -14,6 +14,7 @@ const validateFields = (req, res, next) => {
   if (!title) {
     return res.status(400).json({ status: 400, message: 'Title is missing' });
   }
+  
   next();
 };
 
