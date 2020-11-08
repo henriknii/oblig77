@@ -7,7 +7,7 @@
   "scripts": {
     "web": "webpack-dev-server --config webpack.config.js",
     "start": "NODE_ENV=production node './03_node_http/server.js'",
-    "dev": "nodemon ./02_express/server.js",
+    "dev": "nodemon server.js",
     "basic:01": "nodemon './01_node_http_express/01_basic_server.js'",
     "basic:02": "nodemon './01_node_http_express/02_basic_express.js'",
     "basic:03": "nodemon './01_node_http_express/03_express_middleware.js'",
@@ -41,6 +41,11 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.6.1",
     "morgan": "^1.10.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.10",
+    "slugify": "^1.4.5",
+    "validator": "^13.1.17",
+    "argon2": "^0.27.0"
   }
 }
