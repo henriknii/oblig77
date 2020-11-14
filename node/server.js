@@ -27,7 +27,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type']
 }))
 
-app.use(`${process.env.BASEURL}/polls`, poll);
+app.use(`${process.env.BASEURL}/polls`, cors(), poll);
 
 app.use(errorMiddleware);
 
