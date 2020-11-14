@@ -7,7 +7,7 @@
   "scripts": {
     "web": "webpack-dev-server --config webpack.config.js",
     "start": "NODE_ENV=production node './03_node_http/server.js'",
-    "altstart": "set NODE_ENV=production node './03_node_http/server.js'",
+    "altstart": "set NODE_ENV=production node 'server.js'",
     "dev": "nodemon server.js",
     "basic:01": "nodemon './01_node_http_express/01_basic_server.js'",
     "basic:02": "nodemon './01_node_http_express/02_basic_express.js'",
