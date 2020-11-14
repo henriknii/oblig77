@@ -39,3 +39,11 @@ h3{
 #or{
   opacity: 0.3;  
 }
+
+
+.btn-outline-pink{
+  color:pink;
+  border:solid  1px pink;
+  background:inherit;
+  
+}

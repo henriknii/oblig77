@@ -6,12 +6,14 @@ import {Switch,Route,withRouter}  from 'react-router-dom';
 import Login from "../Login/Login";
 import Header from "../Header";
 import Register from "../Register/Register"
+import Join from "../Join"
 
 
 const Routes = ({location}) => {
     
     const exlcudedPaths = [
         '/registrer',
+        '/Create-poll'
 
     ]
 return(
@@ -21,6 +23,7 @@ return(
                 <Switch>
                 <Route  path="/" exact component={Login} />
                 <Route path="/registrer" exact component={Register} />
+                <Route path="/join" exact component={Join} />
                 </Switch>
             </div>
         </div>
