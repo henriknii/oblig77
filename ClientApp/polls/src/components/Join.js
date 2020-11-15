@@ -4,22 +4,24 @@ import axios from 'axios'
 
 
 const Join  = () => {
-
-    
-
     const [poll, setPoll] = useState({});
     const [inputId,setInputId] = useState("");
+    let compId = "";
 
+    const setId = (id) =>{
+        compId=id;
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
     }
     const handleJoinPoll = async () => {
-
+        console.log(compId)
         try{
             if(inputId !== ""){
+            console.log(inputId)
             const result = await axios(`http://localhost:5000/api/v1/polls/${inputId}`);
-    
+            console.log(result)
             setPoll(result);
             }
         }
