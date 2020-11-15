@@ -15,7 +15,10 @@ const CreatePoll = () =>{
 
     const setTitle =(bonk)=> compTitle=bonk;
     const setEmail =(bonk)=> compEmail=bonk;
-    const setRoom_code =(bonk)=> compRoom_code=bonk;
+    const setRoom_code =(bonk)=> {
+        compRoom_code=bonk;
+        console.log(bonk)
+    }
     const setItem1 =(bonk)=> {
         compItem1={
             name: bonk,
@@ -60,10 +63,29 @@ const CreatePoll = () =>{
     
 
     const handleSubmit = async (event) => {
-        setFormData(form)
-        console.log(formData)
-
-      const result =  await axios.post('http://localhost:5000/api/v1/polls/',formData).then(res => {
+      let variable={
+          title:compTitle,
+      room_code:compRoom_code,
+      items:[{
+          name:compItem1,
+          description:"TestDescription",
+          yay_userId:[1],
+          nay_userID:[1]
+        },{
+            name:compItem2,
+            description:"TestDescription",
+            yay_userId:[1],
+            nay_userID:[1]
+        },{
+            name:compItem3,
+            description:"TestDescription",
+            yay_userId:[1],
+            nay_userID:[1]
+        }
+    ]
+    }  
+        console.log(variable)
+            const result =  await axios.post('http://localhost:5000/api/v1/polls/',variable).then(res => {
             console.log(res);
             console.log(res.data);
         })

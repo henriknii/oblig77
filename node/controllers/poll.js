@@ -10,7 +10,6 @@ export const get = catchAsyncErrors(async (req, res, next) => {
     );
   }
   const poll = result.filter(poll => poll.room_code == req.params.id);
-  console.log(poll)
   res.status(200).json(poll);
 });
 
@@ -21,13 +20,14 @@ export const list = catchAsyncErrors(async (req, res, next) => {
 
 export const create = catchAsyncErrors(async (req, res, next) => {
   const result = await pollService.listPolls();
-  const pollTest = result.find(poll => poll.room_code == req.params.id);
+  const pollTest = result.filter(poll => poll.room_code == req.body.room_code);
+  if(pollTest.length >= 1){
+    res.status(400).json({request:"Room already exsists"})
+  }else{
+    const poll = await pollService.createPoll(req.body);
+    res.status(201).json(poll); 
+  }
   
-  if(pollTest)return res.status(400)
-  console.log("got through")
-  /*
-  const poll = await pollService.createPoll(req.body);
-  res.status(201).json(poll);*/
 });
 
 export const update = catchAsyncErrors(async (req, res, next) => {
