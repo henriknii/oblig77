@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from "react";
 import { Switch, Route, withRouter, } from "react-router-dom";
+import axios from 'axios'
 
 
 //Components
@@ -17,7 +18,7 @@ const Routes = ({ location }) => {
   // Paths that header is excluded from.
   const excludedPaths = ["/registrer", "/Create-poll",];
 
-
+  
 
   return (
     <div className="App">
@@ -28,7 +29,6 @@ const Routes = ({ location }) => {
           <Route path="/registrer" exact component={Register} />
           <Route path="/join" exact component={Join} />
           <Route path="/CreatePoll" exact component={CreatePoll} />
-          <Route path="/poll/:id" component={Poll}></Route>
           <Route component={PageNotFound}></Route>
         </Switch>
       </div>

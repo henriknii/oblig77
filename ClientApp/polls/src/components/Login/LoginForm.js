@@ -1,5 +1,8 @@
-import React from 'react';
+import axios from 'axios';
+import React,{useState} from 'react';
 import styled from 'styled-components';
+import {Route,useHistory} from 'react-router-dom'
+import Poll from '../Poll';
 
 const Form = styled.form`
     display:flex;
@@ -25,15 +28,38 @@ const Button = styled.button`
 
 const LoginForm = () => {
 
+    const [password,setPassword] = useState()
+    const [email,setEmail] = useState()
 
+    let history = useHistory()
+
+ const handleSubmit = async (event) => {
+    event.preventDefault();
+    try{
+    const result = await axios (`http://localhost:5000/api/v1/user/${email};${password}`)
+    console.log(`http://localhost:5000/api/v1/user/${email};${password}`)
+    console.log(result.data.length)
+
+    if(result.data.length >= 1){
+        history.push("/join")
+    }
+    else{
+        alert("feil brukernavn eller pasord")
+    }
+}
+catch(error){
+    alert("something something went funky")
+}
+    
+ }
 
 
     return(
         <div>
         <h4 className="mb-3">Login</h4>
-        <Form > 
-            <Input type="text"  placeholder="epost"></Input>
-            <Input type="password" className="mb-3 p-1" placeholder="passord"></Input>
+        <Form onSubmit={handleSubmit} > 
+            <Input type="text"  onChange={e => setEmail(e.target.value)}placeholder="epost"></Input>
+            <Input type="password" onChange={e => setPassword(e.target.value)} className="mb-3 p-1" placeholder="passord"></Input>
             <Button class="btn btn-primary">Login</Button>
         </Form>
         </div>
