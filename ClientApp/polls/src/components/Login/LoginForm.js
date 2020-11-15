@@ -24,10 +24,14 @@ const Button = styled.button`
 `
 
 const LoginForm = () => {
+
+
+
+
     return(
         <div>
         <h4 className="mb-3">Login</h4>
-        <Form> 
+        <Form > 
             <Input type="text"  placeholder="epost"></Input>
             <Input type="password" className="mb-3 p-1" placeholder="passord"></Input>
             <Button class="btn btn-primary">Login</Button>
