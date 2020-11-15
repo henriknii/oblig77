@@ -8,6 +8,7 @@ import Header from "../Header";
 import Register from "../Register/Register";
 import Join from "../Join";
 import PageNotFound from "../PageNotFound";
+import CreatePoll from "../CreatePoll";
 
 //checking if PageNotFound is rendered so that the header dissapears.
 
@@ -28,6 +29,7 @@ const Routes = ({ location }) => {
           <Route path="/" exact component={Login} />
           <Route path="/registrer" exact component={Register} />
           <Route path="/join" exact component={Join} />
+          <Route path="/CreatePoll" exact component={CreatePoll} />
           <Route component={PageNotFound}></Route>
         </Switch>
       </div>
