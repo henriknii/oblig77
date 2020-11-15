@@ -13,9 +13,6 @@ import CreatePoll from "../CreatePoll";
 //checking if PageNotFound is rendered so that the header dissapears.
 
 const Routes = ({ location }) => {
-
-
-
   // Paths that header is excluded from.
   const excludedPaths = ["/registrer", "/Create-poll"];
 
