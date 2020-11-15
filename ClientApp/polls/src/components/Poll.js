@@ -9,6 +9,7 @@ const Poll = () => {
   const [isLoading, setIsLoading] = useState(true);
   let { id } = useParams();
 
+
   useEffect(() => {
     async function fetchData() {
       try {
