@@ -52,15 +52,6 @@ const CreatePoll = () =>{
             nay_userId:[1]
         }
     }
-    const form = ()=> {
-        let retur = {
-            title: compTitle,
-            room_code: compRoom_code,
-            items: [compItem1,compItem2,compItem3,compItem4]
-        }
-        return retur;
-    }
-    
 
     const handleSubmit = async (event) => {
       let variable={
