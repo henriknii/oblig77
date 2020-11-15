@@ -1,5 +1,5 @@
 .container{
-  width: 20vh;
+  width: 80vh;
   margin: 0 auto;
 }
 
@@ -47,3 +47,15 @@ h3{
   background:inherit;
   
 }
+
+
+@media only screen and (min-width: 600px) {
+  .App div{
+    width: 80vw;
+  }
+}
+
+.col-sm-1{
+  max-width: 100%!important;
+}
+
