@@ -3,12 +3,15 @@ import catchAsyncErrors from '../middleware/catchAsync.js';
 import ErrorHandler from '../utils/errorHandler.js';
 
 export const get = catchAsyncErrors(async (req, res, next) => {
-  const poll = await pollService.getPollById(req.params.id);
-  if (!poll) {
+  const result = await pollService.listPolls();
+  if (!result) {
     return next(
       new ErrorHandler(`Finner ikke poll med ${req.params.id}`, 404)
     );
+
   }
+  const poll = result.filter(poll => poll.room_code == req.params.id);
+  console.log(poll)
   res.status(200).json(poll);
 });
 

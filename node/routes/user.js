@@ -4,10 +4,10 @@ import { isInteger, validateFields } from '../middleware/index.js';
 
 const router = express.Router();
 
-router.get('/:userid',userController.get);
+router.get('/:id',userController.get);
 router.get('/', userController.list);
 router.post('/', userController.create);
-router.put('/:userid', userController.update);
-router.delete('/:userid', userController.remove);
+router.put('/:id', userController.update);
+router.delete('/:id', userController.remove);
 
 export default router;
