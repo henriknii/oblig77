@@ -11,6 +11,7 @@ import { PORT } from './constants/index.js';
 
 import connectDatabase from './config/db.js';
 import poll from './routes/poll.js';
+import user from './routes/user.js';
 
 
 const app = express();
@@ -28,6 +29,7 @@ app.use(cors({
 }))
 
 app.use(`${process.env.BASEURL}/polls`, cors(), poll);
+app.use(`${process.env.BASEURL}/user`, cors(), user);
 
 app.use(errorMiddleware);
 
