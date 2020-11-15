@@ -77,33 +77,33 @@ const CreatePoll = () =>{
             <h1>Lag en poll</h1>
                 <div className="form-row">
                     <label htmlFor="email">Titel</label>
-                    <input value="Kuk" onChange={(e) => { setTitle(e.target.value)}}  id="titel" className="form-control" type="text" placeholder="example@example.no" pattern='[^\S+@\S+$]'/>
+                    <input onChange={(e) => { setTitle(e.target.value)}}  id="titel" className="form-control" type="text" placeholder="example@example.no" pattern='[^\S+@\S+$]'/>
                 
                 </div>
                 <div className="form-row">
                     <label htmlFor="email">Epost</label>
-                    <input value="email" onChange={(e) => { setEmail(e.target.value)}}  id="email" className="form-control" type="text" placeholder="example@example.no" pattern='[^\S+@\S+$]'/>
+                    <input onChange={(e) => { setEmail(e.target.value)}}  id="email" className="form-control" type="text" placeholder="example@example.no" pattern='[^\S+@\S+$]'/>
                 
                 </div>
                 <div className="form-row">
                     <label htmlFor="roomcode">Rom kode</label>
-                    <input value="roomcode" onChange={(e) => { setRoom_code(e.target.value)}} id="roomcode" className="form-control" type="text"/>
+                    <input onChange={(e) => { setRoom_code(e.target.value)}} id="roomcode" className="form-control" type="text"/>
                 </div>
                 <div className="form-row">
                     <label htmlFor="question1">Spørsmål 1</label>
-                    <input value="item1" onChange={(e) => { setItem1(e.target.value)}} id="question1"  className="form-control" type="text"/>
+                    <input onChange={(e) => { setItem1(e.target.value)}} id="question1"  className="form-control" type="text"/>
                 </div>
                 <div className="form-row mb-3">
                     <label htmlFor="password">Spørsmål 2</label>
-                    <input value="item2" onChange={(e) => { setItem2(e.target.value)}} id="password" className="form-control"/>
+                    <input onChange={(e) => { setItem2(e.target.value)}} id="password" className="form-control"/>
                 </div>
                 <div className="form-row mb-3">
                     <label htmlFor="password2">Spørsmål 3</label>
-                    <input value="item3" onChange={(e) => { setItem3(e.target.value)}} id="password2" className="form-control"/>
+                    <input onChange={(e) => { setItem3(e.target.value)}} id="password2" className="form-control"/>
                 </div>
                 <div className="form-row mb-3">
                     <label htmlFor="password3">Spørsmål 4</label>
-                    <input value="item4" onChange={(e) => { setItem4(e.target.value)}} id="password3" className="form-control"/>
+                    <input onChange={(e) => { setItem4(e.target.value)}} id="password3" className="form-control"/>
                 </div>
                 <button onClick={(e) => handleSubmit()} className="btn btn-primary" type="submit" >Lag poll</button>
             </form>

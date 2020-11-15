@@ -20,8 +20,14 @@ export const list = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const create = catchAsyncErrors(async (req, res, next) => {
+  const result = await pollService.listPolls();
+  const pollTest = result.find(poll => poll.room_code == req.params.id);
+  
+  if(pollTest)return res.status(400)
+  console.log("got through")
+  /*
   const poll = await pollService.createPoll(req.body);
-  res.status(201).json(poll);
+  res.status(201).json(poll);*/
 });
 
 export const update = catchAsyncErrors(async (req, res, next) => {
