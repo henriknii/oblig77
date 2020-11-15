@@ -8,7 +8,6 @@ export const get = catchAsyncErrors(async (req, res, next) => {
     return next(
       new ErrorHandler(`Finner ikke poll med ${req.params.id}`, 404)
     );
-
   }
   const poll = result.filter(poll => poll.room_code == req.params.id);
   console.log(poll)
