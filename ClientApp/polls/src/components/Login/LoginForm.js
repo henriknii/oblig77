@@ -8,7 +8,7 @@ const Form = styled.form`
     margin: 0 auto;
 `
 
-const Input = styled.input`
+export const Input = styled.input`
     margin-bottom: 30px;
     padding: 5px;
 `
@@ -35,5 +35,8 @@ const LoginForm = () => {
         </div>
     )
 }
+
+
+
 
 export default LoginForm
