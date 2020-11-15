@@ -11,7 +11,7 @@ const  Login = () => {
         
         <div className="col-xs-1 w-75 mx-auto text-center ">
             <LoginForm />
-            <h4 className="mb-3">Registrer deg </h4>
+            <h4 className="mb-3">Registrer deg</h4>
             <Link to ="/registrer">
             <button className="btn btn-outline-secondary">Bli med</button>
             </Link>
