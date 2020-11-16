@@ -24,7 +24,6 @@ export const get = catchAsyncErrors(async (req, res, next) => {
     );
   }
   console.log(result)
-
   const poll = result.filter(user => user.email == parametere2[0] && user.password == parametere2[1]);
 
   console.log(poll)
