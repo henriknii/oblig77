@@ -4,77 +4,31 @@ import axios from 'axios'
 
 const CreatePoll = () =>{
     let compTitle ="";
-    let compEmail ="";
     let compRoom_code="";
-    let compItem1={name:"",description:"",yay_userId:[],nay_userID:[]};
-    let compItem2={name:"",description:"",yay_userId:[],nay_userID:[]};
-    let compItem3={name:"",description:"",yay_userId:[],nay_userID:[]};
-    let compItem4={name:"",description:"",yay_userId:[],nay_userID:[]};
+    let compQuestion="";
 
-    const [formData,setFormData] = useState({title:"Test",room_code:"TEST69",items:[{name:"TestNavn",description:"TestDescription",yay_userId:[1],nay_userID:[1]}]})
+
+    const [formData,setFormData] = useState({})
+    
 
     const setTitle =(bonk)=> compTitle=bonk;
-    const setEmail =(bonk)=> compEmail=bonk;
     const setRoom_code =(bonk)=> {
         compRoom_code=bonk;
         console.log(bonk)
     }
-    const setItem1 =(bonk)=> {
-        compItem1={
-            name: bonk,
-            description: "Temp",
-            yay_userId:[1],
-            nay_userId:[1]
-        }
-    }
-
-    const setItem2 =(bonk)=> {
-        compItem2={
-            name: bonk,
-            description: "Temp",
-            yay_userId:[1],
-            nay_userId:[1]
-        }
-    }
-    const setItem3 =(bonk)=> {
-        compItem3={
-            name: bonk,
-            description: "Temp",
-            yay_userId:[1],
-            nay_userId:[1]
-        }
-    }
-    const setItem4 =(bonk)=> {
-        compItem4={
-            name: bonk,
-            description: "Temp",
-            yay_userId:[1],
-            nay_userId:[1]
-        }
+    const setQuestion =(bonk)=> {
+        compQuestion = bonk
     }
 
     const handleSubmit = async (event) => {
       let variable={
           title:compTitle,
-      room_code:compRoom_code,
-      items:[{
-          name:compItem1,
-          description:"TestDescription",
-          yay_userId:[1],
-          nay_userID:[1]
-        },{
-            name:compItem2,
-            description:"TestDescription",
-            yay_userId:[1],
-            nay_userID:[1]
-        },{
-            name:compItem3,
-            description:"TestDescription",
-            yay_userId:[1],
-            nay_userID:[1]
+          room_code:compRoom_code,
+          question:compQuestion,
+          answeredYesBy:[],
+          answeredNoBy:[]
         }
-    ]
-    }  
+    
         console.log(variable)
             const result =  await axios.post('http://localhost:5000/api/v1/polls/',variable).then(res => {
             console.log(res);
@@ -93,30 +47,14 @@ const CreatePoll = () =>{
                     <input onChange={(e) => { setTitle(e.target.value)}}  id="titel" className="form-control" type="text" placeholder="example@example.no" pattern='[^\S+@\S+$]'/>
                 
                 </div>
-                <div className="form-row">
-                    <label htmlFor="email">Epost</label>
-                    <input onChange={(e) => { setEmail(e.target.value)}}  id="email" className="form-control" type="text" placeholder="example@example.no" pattern='[^\S+@\S+$]'/>
-                
-                </div>
+
                 <div className="form-row">
                     <label htmlFor="roomcode">Rom kode</label>
                     <input onChange={(e) => { setRoom_code(e.target.value)}} id="roomcode" className="form-control" type="text"/>
                 </div>
                 <div className="form-row">
-                    <label htmlFor="question1">Spørsmål 1</label>
-                    <input onChange={(e) => { setItem1(e.target.value)}} id="question1"  className="form-control" type="text"/>
-                </div>
-                <div className="form-row mb-3">
-                    <label htmlFor="password">Spørsmål 2</label>
-                    <input onChange={(e) => { setItem2(e.target.value)}} id="password" className="form-control"/>
-                </div>
-                <div className="form-row mb-3">
-                    <label htmlFor="password2">Spørsmål 3</label>
-                    <input onChange={(e) => { setItem3(e.target.value)}} id="password2" className="form-control"/>
-                </div>
-                <div className="form-row mb-3">
-                    <label htmlFor="password3">Spørsmål 4</label>
-                    <input onChange={(e) => { setItem4(e.target.value)}} id="password3" className="form-control"/>
+                    <label htmlFor="question1">Hva vil du avklare med dine medmennesker? (ingen garanti for at roboter kan forflaske resultatene)</label>
+                    <input onChange={(e) => { setQuestion(e.target.value)}} id="question1"  className="form-control" type="text"/>
                 </div>
                 <button onClick={(e) => handleSubmit()} className="btn btn-primary" type="submit" >Lag poll</button>
             </form>
