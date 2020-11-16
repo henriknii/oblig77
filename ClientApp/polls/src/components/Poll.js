@@ -51,6 +51,7 @@ const Poll = ({location}) => {
         <h1>{poll[0].title}</h1>
         <p>{poll[0].question} ?</p>
         <p>{poll[0]._id}</p>
+        <p>{poll[0].}</p>
 
         <button onClick={() => { handleYesVote(poll[0]._id)}} className="btn btn-primary">Ja</button>
         <button onClick={() => {handleNoVote(poll[0]._id)}}className="btn btn-danger">Nei</button>
