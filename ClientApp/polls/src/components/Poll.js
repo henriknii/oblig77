@@ -10,13 +10,21 @@ const Poll = ({location}) => {
   let { id } = useParams();
 
   //USER
-  let user = location.state.user.user;
+  let user = location.state.user.user[0].email;
 
-  const handleVote = async (id) => {
-      const res  = await  axios.put(`http://localhost:5000/api/v1/polls/5fb05452d914fc0e309e03db`,{title:"title"});
-      console.log("res:" + res);
-
+  const handleYesVote = async (pollId) => {
+    if(pollId){
+      const res  = await  axios.put(`http://localhost:5000/api/v1/polls/${pollId}`,{$push:{answeredYesBy:user}});
+    }
   }
+
+  const handleNoVote = async (pollId) => {
+    if(pollId){
+      const res  = await  axios.put(`http://localhost:5000/api/v1/polls/${pollId}`,{$push:{answeredNoBy:user}});
+    }
+  }
+
+
 
 
   useEffect(() => {
@@ -24,8 +32,6 @@ const Poll = ({location}) => {
       try {
         const result = await axios(`http://localhost:5000/api/v1/polls/${id}`);
         setPoll(result.data);
-        console.log(result);
-        console.log(user);
       } catch (error) {
         alert("this poll does not exist");
       } finally {
@@ -33,9 +39,7 @@ const Poll = ({location}) => {
       }
     }
     fetchData();
-    handleVote()
   }, []);
-
 
   const renderPoll = () => {
     if (isLoading) {
@@ -44,12 +48,13 @@ const Poll = ({location}) => {
 
     return (
       <div className="w-100 mx-auto text-align-center">
-        <h3>{poll[0].title}</h3>
+        <h1>{poll[0].title}</h1>
+        <p>{poll[0].question} ?</p>
+        <p>{poll[0]._id}</p>
 
-        {poll[0].items.map(function(item, i){
-            return <Item poll={poll} setPoll={setPoll} item={item}></Item>
-          })
-        }
+        <button onClick={() => { handleYesVote(poll[0]._id)}} className="btn btn-primary">Ja</button>
+        <button onClick={() => {handleNoVote(poll[0]._id)}}className="btn btn-danger">Nei</button>
+
       </div>
     );
   };
@@ -59,33 +64,6 @@ const Poll = ({location}) => {
   return renderPoll();
 };
 
-const Item = ({poll,setPoll,item,handleVote}) =>{
-  const [answered,setAnswered] = useState(false)
-
-  const vote = (e,type)=>{
-    if(answered==true){
-      alert("Du kan ikke stemme om igjen")
-      return;
-    }
-
-    if(type=="yay"){
-      e.target.style.backgroundColor="green";
-      setAnswered(true)
-    }
-    if(type=="nay"){
-      e.target.style.backgroundColor="red";
-      setAnswered(true)
-    }
-   
-  }
-
-  return(
-    <div class="card" style={{margin:"1%"}}>
-        <h3>{item.name}</h3><p>{item.description}</p><button onClick={(e) => vote(e,"yay",item.name)} class="button" style={{width:"20%"}}>YAY</button>
-        <p>or</p><button  style={{width:"20%"}} class="button">NAY</button>
-    </div>
-  );
-}
 
 
 export default Poll;
