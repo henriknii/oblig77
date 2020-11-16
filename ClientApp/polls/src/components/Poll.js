@@ -13,7 +13,7 @@ const Poll = ({location}) => {
   let user = location.state.user.user;
 
   const handleVote = async (id) => {
-      const res  = await  axios.put(`http://localhost:5000/api/v1/polls/5fb05452d914fc0e309e03db`,{$push:{data}});
+      const res  = await  axios.put(`http://localhost:5000/api/v1/polls/5fb05452d914fc0e309e03db`,{title:"title"});
       console.log("res:" + res);
 
   }

@@ -15,16 +15,13 @@ const PollSchema = new Schema(
       required: true,
       trim: true,
     },
-   quuestion:{
+   question:{
      type:String,
      required: true,
      trim:true
    },
-   answeredBy:{
-     type:Number,
-     required: true,
-     
-   }
+   answeredYesBy:[Number],
+   answeredNoBy:[Number],
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
