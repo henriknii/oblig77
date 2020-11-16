@@ -4,7 +4,7 @@ import slugify from 'slugify';
 const { Schema } = mongoose;
 
 const PollSchema = new Schema(
-  {
+  { 
     title: {
       type: String,
       required: true,
@@ -15,14 +15,16 @@ const PollSchema = new Schema(
       required: true,
       trim: true,
     },
-    items:{
-      type: Object,
-      required: true,
-      name: String,
-      description: String,
-      yay_userid: [Number],
-      nay_userid: [Number]
-    },
+   quuestion:{
+     type:String,
+     required: true,
+     trim:true
+   },
+   answeredBy:{
+     type:Number,
+     required: true,
+     
+   }
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );

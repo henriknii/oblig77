@@ -12,6 +12,11 @@ const Poll = ({location}) => {
   //USER
   let user = location.state.user.user;
 
+  const handleVote = async (id) => {
+      const res  = await  axios.put(`http://localhost:5000/api/v1/polls/5fb05452d914fc0e309e03db`,{$push:{data}});
+      console.log("res:" + res);
+
+  }
 
 
   useEffect(() => {
@@ -28,9 +33,9 @@ const Poll = ({location}) => {
       }
     }
     fetchData();
+    handleVote()
   }, []);
 
-  console.log(poll)
 
   const renderPoll = () => {
     if (isLoading) {
@@ -54,7 +59,7 @@ const Poll = ({location}) => {
   return renderPoll();
 };
 
-const Item = ({poll,setPoll,item}) =>{
+const Item = ({poll,setPoll,item,handleVote}) =>{
   const [answered,setAnswered] = useState(false)
 
   const vote = (e,type)=>{
@@ -77,7 +82,7 @@ const Item = ({poll,setPoll,item}) =>{
   return(
     <div class="card" style={{margin:"1%"}}>
         <h3>{item.name}</h3><p>{item.description}</p><button onClick={(e) => vote(e,"yay",item.name)} class="button" style={{width:"20%"}}>YAY</button>
-        <p>or</p><button onClick={(e) => vote(e,"nay",item.name)} style={{width:"20%"}} class="button">NAY</button>
+        <p>or</p><button  style={{width:"20%"}} class="button">NAY</button>
     </div>
   );
 }

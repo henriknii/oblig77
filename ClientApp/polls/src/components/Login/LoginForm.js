@@ -62,7 +62,7 @@ catch(error){
         <Form onSubmit={handleSubmit} > 
             <Input type="text"  onChange={e => setEmail(e.target.value)}placeholder="epost"></Input>
             <Input type="password" onChange={e => setPassword(e.target.value)} className="mb-3 p-1" placeholder="passord"></Input>
-            <Button class="btn btn-primary">Login</Button>
+            <Button className="btn btn-primary">Login</Button>
         </Form>
         </div>
     )
