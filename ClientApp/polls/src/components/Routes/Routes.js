@@ -29,6 +29,7 @@ const Routes = ({ location }) => {
           <Route path="/registrer" exact component={Register} />
           <Route path="/join" exact component={Join} />
           <Route path="/CreatePoll" exact component={CreatePoll} />
+          <Route path="/poll/:id" component={Poll}></Route>
           <Route component={PageNotFound}></Route>
         </Switch>
       </div>

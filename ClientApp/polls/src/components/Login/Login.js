@@ -1,13 +1,13 @@
-import React from "react"
+import React, { useEffect } from "react"
 import {Link} from "react-router-dom";
 import LoginForm from "./LoginForm";
 
 
 
 
-const  Login = () => {
+const  Login = ({location}) => {
 
-
+    
     return (
         
         <div className="col-xs-1 w-75 mx-auto text-center ">

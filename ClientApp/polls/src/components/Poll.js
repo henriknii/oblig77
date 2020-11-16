@@ -4,10 +4,14 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 
-const Poll = () => {
+const Poll = ({location}) => {
   const [poll, setPoll] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   let { id } = useParams();
+
+  //USER
+  let user = location.state.user.user;
+
 
 
   useEffect(() => {
@@ -16,6 +20,7 @@ const Poll = () => {
         const result = await axios(`http://localhost:5000/api/v1/polls/${id}`);
         setPoll(result.data);
         console.log(result);
+        console.log(user);
       } catch (error) {
         alert("this poll does not exist");
       } finally {

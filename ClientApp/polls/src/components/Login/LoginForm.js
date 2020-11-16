@@ -38,10 +38,12 @@ const LoginForm = () => {
     try{
     const result = await axios (`http://localhost:5000/api/v1/user/${email};${password}`)
     console.log(`http://localhost:5000/api/v1/user/${email};${password}`)
-    console.log(result.data.length)
+    let res = result.data;
+        
 
     if(result.data.length >= 1){
-        history.push("/join")
+        history.push("/join", {data: {res}})
+    
     }
     else{
         alert("feil brukernavn eller pasord")

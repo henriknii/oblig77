@@ -1,16 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import {Link, useHistory} from "react-router-dom";
 
 
-const Join  = () => {
+const Join  = ({location}) => {
 
+    let user = location.state.data.res;
     const [inputId,setInputId] = useState("");
 
     let history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        history.push(`poll/${inputId}`)
+        history.push(`Poll/${inputId}`, {user :{user} })
         
     }
 
