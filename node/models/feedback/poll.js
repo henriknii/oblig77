@@ -20,8 +20,8 @@ const PollSchema = new Schema(
      required: true,
      trim:true
    },
-   answeredYesBy:[Number],
-   answeredNoBy:[Number],
+   answeredYesBy:[String],
+   answeredNoBy:[String],
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
