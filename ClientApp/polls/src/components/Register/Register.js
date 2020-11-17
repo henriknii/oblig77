@@ -12,7 +12,7 @@ const Register = () => {
 
     async function register() {  
         const res = await axios.post('http://localhost:5000/api/v1/user/',user)
-        console.log(res.status)
+    
      }
 
      
@@ -23,13 +23,16 @@ const Register = () => {
             password: password
         })
 
-        if(email !=="" && password !==""){
+    }
+
+    useEffect(()=>{
+        if(user && user.email !=="" && user.password !==""){
             register();
             alert("du er nå registret trykk OK for å bli sendt til login.")
             history.push("/")
         }
-        
-    }
+    },[user])
+    
     return(
     <div className="col-sm-1 mx-auto">
         <form className=" col-sm-1 needs-validation" onSubmit={handleSubmit}>
