@@ -16,10 +16,7 @@ const  Login = ({location}) => {
             <Link to ="/registrer">
             <button className="btn btn-outline-secondary">Bli med</button>
             </Link>
-            <h4 className="mb-3">Delta i en poll uten registrering</h4>
-            <Link to="/join">
-            <button className="btn btn-outline-secondary">Ta meg til polls</button>
-            </Link>
+          
         </div>
     )
 }

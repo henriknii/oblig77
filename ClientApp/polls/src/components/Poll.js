@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams ,useHistory} from "react-router-dom";
 import axios from "axios";
 
 
@@ -8,6 +8,7 @@ const Poll = ({location}) => {
   const [poll, setPoll] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   let { id } = useParams();
+  let history = useHistory();
 
   //USER
   let user = location.state.user.user[0].email;
@@ -31,7 +32,13 @@ const Poll = ({location}) => {
     async function fetchData() {
       try {
         const result = await axios(`http://localhost:5000/api/v1/polls/${id}`);
+        if(result.data.length >= 1){
         setPoll(result.data);
+        }
+        else{
+          alert("pollen finnes ikke, du blir nå tatt tilbake til login.")
+          history.push("/")
+        }
       } catch (error) {
         alert("this poll does not exist");
       } finally {
@@ -39,7 +46,7 @@ const Poll = ({location}) => {
       }
     }
     fetchData();
-  }, [poll]);
+  },[poll])
 
   const renderPoll = () => {
     if (isLoading) {
