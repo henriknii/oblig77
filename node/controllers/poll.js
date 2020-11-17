@@ -26,7 +26,7 @@ export const create = catchAsyncErrors(async (req, res, next) => {
     res.status(400).json({request:"Room already exsists"})
   }else{
     const poll = await pollService.createPoll(req.body);
-    res.status(201).json("nigeria"); 
+    res.status(201).json("Norge"); 
   }
   
 });
