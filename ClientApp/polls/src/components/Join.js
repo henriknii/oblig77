@@ -10,7 +10,10 @@ const Join  = ({location}) => {
     let history = useHistory();
 
     const handleSubmit = (event) => {
+        
+
         event.preventDefault();
+        
         history.push(`Poll/${inputId}`, {user :{user} })
         
     }
@@ -20,7 +23,7 @@ const Join  = ({location}) => {
  
             <h4 className="mb-3">Skriv inn valg-id</h4>
             <form onSubmit={handleSubmit} className="col-xs-1 w-75 mx-auto"> 
-                <input type="text" value={inputId} onChange={e => setInputId(e.target.value)} className="mb-3 p-1" placeholder="HK8739" required></input>
+                <input type="text" value={inputId} onChange={e => setInputId(e.target.value)} className="mb-3 p-1" placeholder="HK8740" required></input>
                     <button className="btn btn-primary w-75">Bli med</button>
             </form>
             <h4 className="mb-3">Lag avstemming</h4>
